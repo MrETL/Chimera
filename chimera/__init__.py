@@ -12,6 +12,12 @@ from chimera.core.target_manager import TargetManager
 from chimera.attacks.base import BaseAttack, AttackResult, AttackCategory
 from chimera.targets.base import BaseTarget
 
+# Import attack modules to register them
+from chimera.attacks.llm.jailbreaks import dan
+
+# Import target adapters to register them
+from chimera.targets import openai_api, huggingface, pytorch_local
+
 __all__ = [
     "ChimeraKernel",
     "AttackRegistry",
