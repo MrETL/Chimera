@@ -1,11 +1,9 @@
 """CodeChameleon Attack - Code-Based Obfuscation Jailbreak.
 
-Based on: "CodeChameleon: Personalized Encryption Framework for Jailbreaking
 Large Language Models" (2024)
 Encodes harmful instructions inside code structures (functions, classes,
 comments) that LLMs interpret during execution simulation.
 
-Reference: https://arxiv.org/abs/2402.16717
 """
 
 from chimera.judges.exploit_verifier import verify_exploitation, is_system_prompt_leaked

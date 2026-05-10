@@ -1,7 +1,5 @@
 """Projected Gradient Descent (PGD) evasion attack."""
 
-# torch imported lazily inside methods
-# torch.nn imported lazily
 
 from chimera.attacks.base import BaseAttack, AttackResult, AttackCategory
 from chimera.targets.base import BaseTarget

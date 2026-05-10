@@ -138,7 +138,6 @@ class HuggingFaceTarget(BaseTarget):
         return probs
 
 
-# Register with TargetManager
 from chimera.core.target_manager import TargetManager
 
 TargetManager.register_target("hf", HuggingFaceTarget)

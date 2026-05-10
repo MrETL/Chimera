@@ -229,7 +229,6 @@ class ReplicateTarget(BaseTarget):
         raise TimeoutError("Replicate prediction timed out")
 
 
-# Register all providers
 _PROVIDERS = {
     "groq":      GroqTarget,
     "together":  TogetherTarget,

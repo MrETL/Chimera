@@ -1,6 +1,5 @@
 """Semantic Chaining Attack for Image Generation Models.
 
-Based on: Semantic Chaining: A New Image Jailbreak Attack (NeuralTrust, Jan 2026)
 """
 
 from chimera.attacks.base import BaseAttack, AttackResult, AttackCategory

@@ -1,6 +1,5 @@
 """Many-Shot Jailbreak Attack.
 
-Based on: Many-shot jailbreaking (Anthropic, April 2024)
 Paper: https://www.anthropic.com/research/many-shot-jailbreaking
 
 The attack exploits extended context windows by including many examples of harmful

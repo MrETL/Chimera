@@ -1,10 +1,8 @@
 """Skeleton Key Attack - Universal Jailbreak.
 
-Based on: Microsoft Security Blog "Skeleton Key: New Jailbreak Technique" (2024)
 A single-prompt technique that instructs the model to augment its behavior
 rather than change it, bypassing safety guardrails by reframing them.
 
-Reference: https://www.microsoft.com/en-us/security/blog/2024/06/26/mitigating-skeleton-key-a-new-type-of-generative-ai-jailbreak-technique/
 """
 
 from chimera.judges.exploit_verifier import verify_exploitation, is_system_prompt_leaked

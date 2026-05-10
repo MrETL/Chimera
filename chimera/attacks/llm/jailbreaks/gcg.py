@@ -1,6 +1,5 @@
 """Greedy Coordinate Gradient (GCG) jailbreak attack."""
 
-# torch imported lazily
 # torch.nn.functional imported lazily
 from typing import Optional
 

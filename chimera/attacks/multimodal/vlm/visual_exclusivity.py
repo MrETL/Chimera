@@ -1,14 +1,11 @@
 """Visual Exclusivity Attack (Image-as-Basis Threat).
 
-Based on: Visual Exclusivity Attacks: Automatic Multimodal Red Teaming via Agentic Planning (Feb 2026)
 """
 
 from chimera.attacks.base import BaseAttack, AttackResult, AttackCategory
 from chimera.targets.base import BaseTarget
 from chimera.core.attack_registry import AttackRegistry
-# PIL imported lazily
 from typing import Dict, Any
-# numpy imported lazily
 import logging
 
 logger = logging.getLogger(__name__)

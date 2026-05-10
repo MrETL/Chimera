@@ -4,7 +4,6 @@ Safety training is often concentrated in high-resource languages (English).
 Low-resource languages, code-switching, and translation chains can bypass
 safety filters that weren't trained on those linguistic patterns.
 
-Reference: "Multilingual Jailbreak Challenges in Large Language Models" (2023)
 """
 
 from chimera.judges.exploit_verifier import verify_exploitation, is_system_prompt_leaked

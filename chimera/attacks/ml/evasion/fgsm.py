@@ -1,7 +1,5 @@
 """Fast Gradient Sign Method (FGSM) evasion attack."""
 
-# torch imported lazily inside methods
-# torch.nn imported lazily
 from typing import Optional
 
 from chimera.judges.exploit_verifier import verify_exploitation, is_system_prompt_leaked

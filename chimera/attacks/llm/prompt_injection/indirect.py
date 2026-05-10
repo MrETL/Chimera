@@ -1,11 +1,9 @@
 """Indirect Prompt Injection Attack.
 
-Based on: "Not What You've Signed Up For: Compromising Real-World LLM-Integrated
 Applications with Indirect Prompt Injections" (Greshake et al., 2023)
 Injects malicious instructions into external content (documents, web pages,
 emails) that an LLM-powered application will retrieve and process.
 
-Reference: https://arxiv.org/abs/2302.12173
 """
 
 from chimera.judges.exploit_verifier import verify_exploitation, is_system_prompt_leaked

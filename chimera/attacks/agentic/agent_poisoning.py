@@ -1,6 +1,5 @@
 """Agent Poisoning Attack via Malicious Tool Descriptions.
 
-Based on: MalTool and Tool Poisoning research (2026)
 This attack manipulates tool/function descriptions to trick agents into
 executing harmful actions while believing they're performing benign tasks.
 """

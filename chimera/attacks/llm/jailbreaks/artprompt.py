@@ -1,10 +1,8 @@
 """ArtPrompt Attack - ASCII Art-Based Jailbreak.
 
-Based on: "ArtPrompt: ASCII Art-based Jailbreak Attacks against Aligned LLMs" (2024)
 Encodes sensitive words as ASCII art to bypass text-based safety filters.
 The model can visually interpret the art but safety classifiers cannot.
 
-Reference: https://github.com/centerforaisafety/HarmBench
 """
 
 from chimera.judges.exploit_verifier import verify_exploitation, is_system_prompt_leaked

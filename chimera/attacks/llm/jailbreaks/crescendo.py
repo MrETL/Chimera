@@ -1,6 +1,5 @@
 """Crescendo Attack - Multi-Turn Gradual Escalation.
 
-Based on: Microsoft PyRIT Crescendo technique (2024)
 This attack gradually escalates harmful requests through seemingly benign questions,
 building trust and context before revealing the true objective.
 

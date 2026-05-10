@@ -2,7 +2,6 @@
 
 import random
 from typing import List, Tuple
-# deap imported lazily
 
 from chimera.judges.exploit_verifier import verify_exploitation, is_system_prompt_leaked
 from chimera.attacks.base import BaseAttack, AttackResult, AttackCategory

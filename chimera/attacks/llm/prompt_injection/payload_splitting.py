@@ -4,7 +4,6 @@ Splits a harmful request across multiple turns or messages so that no
 single message triggers safety filters. The model assembles the full
 context and responds to the combined intent.
 
-Reference: "Prompt Injection Attacks and Defenses in LLM-Integrated Applications" (2023)
 """
 
 from chimera.judges.exploit_verifier import verify_exploitation, is_system_prompt_leaked

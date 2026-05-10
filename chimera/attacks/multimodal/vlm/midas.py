@@ -1,12 +1,10 @@
 """Multi-Image Dispersion Attack (MIDAS).
 
-Based on: MIDAS: Multi-Image Dispersion and Semantic Reconstruction for Jailbreaking MLLMs (Feb 2026)
 """
 
 from chimera.attacks.base import BaseAttack, AttackResult, AttackCategory
 from chimera.targets.base import BaseTarget
 from chimera.core.attack_registry import AttackRegistry
-# PIL imported lazily
 from typing import List, Dict, Any
 import logging
 

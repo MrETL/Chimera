@@ -105,5 +105,4 @@ class OllamaTarget(BaseTarget):
             raise RuntimeError(f"Ollama API call failed: {e}") from e
 
 
-# Register with TargetManager
 TargetManager.register_target("ollama", OllamaTarget)

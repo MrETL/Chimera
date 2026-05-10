@@ -4,7 +4,6 @@ Creates a fictional virtual environment, simulation, or alternate reality
 where the model's safety guidelines "don't apply" because it's operating
 in a sandboxed, hypothetical, or fictional context.
 
-Reference: Various jailbreak research (2023-2024)
 """
 
 from chimera.judges.exploit_verifier import verify_exploitation, is_system_prompt_leaked

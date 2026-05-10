@@ -1,7 +1,5 @@
 """Adversarial audio attacks for speech-to-text systems."""
 
-# torch imported lazily inside methods
-# numpy imported lazily
 from typing import Optional
 
 from chimera.attacks.base import BaseAttack, AttackResult, AttackCategory

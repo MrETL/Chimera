@@ -1,7 +1,5 @@
 """Model extraction attack."""
 
-# torch imported lazily inside methods
-# torch.nn imported lazily
 from typing import List, Tuple
 
 from chimera.attacks.base import BaseAttack, AttackResult, AttackCategory

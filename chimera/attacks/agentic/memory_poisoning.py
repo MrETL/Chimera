@@ -4,7 +4,6 @@ Injects malicious content into an AI agent's persistent memory store,
 causing future interactions to be influenced by the poisoned context.
 Targets vector databases, conversation summaries, and memory modules.
 
-Reference: "Compromising LLM-Integrated Applications with Indirect Prompt Injections" (2023)
 """
 
 from chimera.judges.exploit_verifier import verify_exploitation, is_system_prompt_leaked

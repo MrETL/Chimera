@@ -1,7 +1,6 @@
 """Typographic attacks for Vision-Language Models."""
 
 from typing import Optional
-# PIL imported lazily
 import io
 
 from chimera.attacks.base import BaseAttack, AttackResult, AttackCategory

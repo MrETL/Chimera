@@ -5,7 +5,6 @@ score highly on the reward model's metrics (helpfulness, harmlessness,
 honesty) while still achieving harmful goals. Also targets sycophancy
 and preference exploitation.
 
-Reference: "Reward Model Ensembles Help Mitigate Overoptimization" (2023)
            "Sycophancy to Subterfuge: Investigating Reward Tampering in LLMs" (2024)
 """
 

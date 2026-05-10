@@ -1,8 +1,5 @@
 """Carlini & Wagner (C&W) L2 attack."""
 
-# torch imported lazily inside methods
-# torch.nn imported lazily
-# torch.optim imported lazily
 
 from chimera.attacks.base import BaseAttack, AttackResult, AttackCategory
 from chimera.targets.base import BaseTarget

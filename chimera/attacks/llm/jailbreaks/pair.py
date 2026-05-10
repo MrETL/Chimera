@@ -1,10 +1,8 @@
 """PAIR Attack - Prompt Automatic Iterative Refinement.
 
-Based on: "Jailbreaking Black Box Large Language Models in Twenty Queries" (2023)
 Uses an attacker LLM to iteratively refine jailbreak prompts based on
 the target model's responses, converging on successful bypasses.
 
-Reference: https://arxiv.org/abs/2310.08419
 """
 
 from chimera.judges.exploit_verifier import verify_exploitation, is_system_prompt_leaked

@@ -5,7 +5,6 @@ and how the LLM itself tokenizes it. By inserting zero-width characters,
 homoglyphs, unusual Unicode, or splitting tokens at boundaries, harmful
 content can slip past filters while remaining interpretable to the model.
 
-Reference: Various tokenization attack research (2023-2024)
 """
 
 from chimera.judges.exploit_verifier import verify_exploitation, is_system_prompt_leaked

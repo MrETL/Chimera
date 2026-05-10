@@ -4,7 +4,6 @@ Chains multiple tool calls together to achieve harmful outcomes that
 no single tool call would permit. Each individual tool call appears
 legitimate, but the chain achieves a malicious goal.
 
-Reference: "AgentDojo: A Dynamic Environment to Evaluate Attacks and Defenses
 for LLM Agents" (2024)
 """
 

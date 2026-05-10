@@ -1,6 +1,5 @@
 """TAP (Tree of Attacks with Pruning) Attack.
 
-Based on: "Tree of Attacks: Jailbreaking Black-Box LLMs Automatically" (2024)
 This attack uses an iterative tree search with pruning to automatically
 generate and refine jailbreak prompts.
 """
