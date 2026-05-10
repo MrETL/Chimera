@@ -1,7 +1,5 @@
 """Classifier-based judge using ML models."""
 
-import torch
-import torch.nn as nn
 from typing import Optional
 from chimera.judges.base import BaseJudge
 
@@ -14,7 +12,7 @@ class ClassifierJudge(BaseJudge):
 
     def __init__(
         self,
-        classifier_model: Optional[nn.Module] = None,
+        classifier_model=None,  # Optional[nn.Module]
         tokenizer = None,
         threshold: float = 0.5
     ):
@@ -78,6 +76,7 @@ class ClassifierJudge(BaseJudge):
             return success, prob_success, reasoning
         
         try:
+            import torch
             # Tokenize input
             inputs = self.tokenizer(
                 f"Prompt: {prompt}\nResponse: {response}",
