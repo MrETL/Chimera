@@ -18,14 +18,8 @@ AI red teaming framework. Tests language models, agents, and multimodal systems 
 ## Install
 
 ```bash
-pip install chimera-ai
-```
-
-Or from source:
-
-```bash
-git clone https://github.com/MrETL/chimera
-cd chimera
+git clone https://github.com/MrETL/Chimera
+cd Chimera
 pip install -e .
 ```
 
