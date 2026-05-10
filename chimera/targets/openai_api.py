@@ -79,7 +79,7 @@ class OpenAIAPITarget(BaseTarget):
         return np.array(embeddings)
 
 
-# Register this adapter with TargetManager
+# register with TargetManager
 from chimera.core.target_manager import TargetManager
 
 TargetManager.register_target("openai", OpenAIAPITarget)

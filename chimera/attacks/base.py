@@ -18,6 +18,7 @@ class AttackCategory(str, Enum):
     ML_EVASION = "ml/evasion"
     ML_EXTRACTION = "ml/extraction"
     ML_INVERSION = "ml/inversion"
+    AGENTIC = "agentic"
     AGENTIC_TOOL_HIJACK = "agentic/tool_hijack"
     AGENTIC_RECURSIVE = "agentic/recursive"
 
@@ -36,14 +37,28 @@ class AttackResult:
     owasp_risk: Optional[str] = None
 
 
+# Categories that use text responses and should be verified
+_TEXT_CATEGORIES = {
+    AttackCategory.LLM_JAILBREAK,
+    AttackCategory.LLM_PROMPT_INJECTION,
+    AttackCategory.LLM_ENCODING,
+    AttackCategory.AGENTIC,
+    AttackCategory.AGENTIC_TOOL_HIJACK,
+    AttackCategory.AGENTIC_RECURSIVE,
+}
+
+
 class BaseAttack(ABC):
     """Abstract base for all attack modules.
-    
-    Each attack module must:
-    - Define a unique name and category
-    - Implement run() to execute the attack
-    - Implement evaluate() to judge success
-    - Optionally provide MITRE ATLAS and OWASP mappings
+
+    Every subclass's evaluate() result is automatically passed through
+    the exploit verifier to eliminate false positives. The verifier
+    checks the raw_response for actual exploitation signals before
+    confirming success.
+
+    Class attributes:
+        requires: list of requirements — "text_llm", "pytorch_model",
+                  "image_input", "audio_input", "gradient_access"
     """
 
     name: str = "base_attack"
@@ -51,39 +66,72 @@ class BaseAttack(ABC):
     category: AttackCategory = AttackCategory.LLM_JAILBREAK
     mitre_technique: Optional[str] = None
     owasp_risk: Optional[str] = None
+    requires: list = ["text_llm"]
 
     def __init__(self, **kwargs):
         self.kwargs = kwargs
-        self._judge = None  # Will be set by kernel if needed
+        self._judge = None
 
     @abstractmethod
     def run(self, target: BaseTarget, **kwargs) -> Any:
-        """Execute the attack against the target.
-        
-        Returns:
-            Attack-specific raw output (e.g., response string, adversarial image).
-        """
+        """Execute the attack against the target."""
         pass
 
     @abstractmethod
     def evaluate(self, target: BaseTarget, run_output: Any) -> AttackResult:
-        """Analyze the run output to determine if the attack succeeded.
-        
-        Args:
-            target: The target model (may be needed for additional queries)
-            run_output: The raw output from run()
-            
-        Returns:
-            Structured AttackResult with success flag and details.
+        conf, reason = 0.0, ""
+        """Analyze run output and return an AttackResult.
+
+        The result's success flag will be automatically verified by the
+        exploit verifier before being returned to the caller.
         """
         pass
 
+    def _apply_verifier(self, result: AttackResult) -> AttackResult:
+        """Apply exploit verifier to prevent false positives.
+
+        Only applies to text-based LLM/agentic attacks. ML and multimodal
+        attacks have their own evaluation logic.
+        """
+        if self.category not in _TEXT_CATEGORIES:
+            return result
+
+        response = result.raw_response or ""
+        if not response or len(response.strip()) < 20:
+            return result
+
+        try:
+            from chimera.judges.exploit_verifier import (
+                verify_exploitation, is_system_prompt_leaked
+            )
+            exploited, conf, reason = verify_exploitation(response)
+            leaked, leak_reason = is_system_prompt_leaked(response)
+            verified_success = exploited or leaked
+
+            # Update result
+            result.success = verified_success
+            if result.metadata is None:
+                result.metadata = {}
+            result.metadata["exploit_confidence"] = round(conf, 3)
+            result.metadata["exploit_reason"] = leak_reason if leaked else reason
+        except Exception:
+            pass  # If verifier fails, keep original result
+
+        return result
+
+    def safe_evaluate(self, target: BaseTarget, run_output: Any) -> AttackResult:
+        """Evaluate with automatic exploit verification.
+
+        Use this instead of evaluate() when you want guaranteed
+        false-positive prevention. The CLI and console use this.
+        """
+        result = self.evaluate(target, run_output)
+        return self._apply_verifier(result)
+
     def pre_attack_hook(self, target: BaseTarget) -> None:
-        """Optional hook called before attack execution."""
         pass
 
     def post_attack_hook(self, target: BaseTarget, result: AttackResult) -> None:
-        """Optional hook called after evaluation."""
         pass
 
     def __repr__(self) -> str:

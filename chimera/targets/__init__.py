@@ -1,4 +1,4 @@
-"""Target adapters for various AI models."""
+"""Target adapters."""
 
 from chimera.targets.base import BaseTarget
 

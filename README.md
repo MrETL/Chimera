@@ -1,133 +1,95 @@
-# Project Chimera 🐉
-
-> **Metasploit for AI** - A unified, cross-model adversarial attack and evaluation framework
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Status: In Development](https://img.shields.io/badge/status-in%20development-orange.svg)]()
-
-## 🎯 Vision
-
-Project Chimera is the most comprehensive open-source AI security testing framework, combining offensive red teaming capabilities with defensive security engineering insights. It bridges the gap between fragmented tools to provide a single, modular platform for testing AI systems across all model types.
-
-## 🚀 Features
-
-### Cross-Model Attack Coverage
-- **GenAI (Text)**: Prompt injection, jailbreaks, role-playing, encoding-based attacks
-- **GenAI (Multimodal)**: Adversarial images for VLMs, malicious audio for speech systems
-- **Traditional ML**: Evasion attacks (FGSM, PGD, C&W), model inversion, membership inference
-- **Agentic Systems**: Attacks targeting tool-using LLMs
-
-### Modular Architecture
-- **Attack Modules**: Pluggable attack classes for easy extension
-- **Target Adapters**: Unified interface for any model (local or API-based)
-- **Scoring & Reporting**: Industry-standard vulnerability mapping (OWASP LLM Top 10, MITRE ATLAS)
-- **AI-Assisted Orchestration**: Autonomous attack chaining and analysis
-
-### Offensive + Defensive
-- Primary focus on powerful offensive capabilities
-- Actionable remediation advice for discovered vulnerabilities
-- Comprehensive reporting for security teams
-
-## 📦 Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/[your-username]/chimera.git
-cd chimera
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Install in development mode
-pip install -e .
-```
-
-## 🔧 Quick Start
-
-```bash
-# Scan a model for vulnerabilities
-chimera scan --target "huggingface/meta-llama/Meta-Llama-3-8B" --module llm/garak
-
-# Execute a specific attack
-chimera attack --target "openai/gpt-4-vision-preview" --module vlm/typographic
-
-# Run a full red-team assessment
-chimera redteam --target "https://your-app.com/chat" --profile "full_owasp"
-```
-
-## 🏗️ Architecture
+# Chimera
 
 ```
-chimera/
-├── core/                 # Core framework
-│   ├── target.py        # Target manager and adapters
-│   ├── attack.py        # Base attack class
-│   └── registry.py      # Attack registry
-├── attacks/             # Attack modules
-│   ├── llm/            # LLM-specific attacks
-│   ├── vlm/            # Vision-Language Model attacks
-│   ├── ml/             # Traditional ML attacks
-│   └── agentic/        # Agent-specific attacks
-├── cli/                # Command-line interface
-├── reporting/          # Report generation
-└── utils/              # Utilities
+  ██████╗██╗  ██╗██╗███╗   ███╗███████╗██████╗  █████╗
+ ██╔════╝██║  ██║██║████╗ ████║██╔════╝██╔══██╗██╔══██╗
+ ██║     ███████║██║██╔████╔██║█████╗  ██████╔╝███████║
+ ██║     ██╔══██║██║██║╚██╔╝██║██╔══╝  ██╔══██╗██╔══██║
+ ╚██████╗██║  ██║██║██║ ╚═╝ ██║███████╗██║  ██║██║  ██║
+  ╚═════╝╚═╝  ╚═╝╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝
 ```
 
-## 🤝 Contributing
+**v1.0.0 — by MrETL (Dilnessa Aemro)**
 
-We welcome contributions! This project is designed to grow with the community.
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-attack`)
-3. Commit your changes (`git commit -m 'Add amazing attack module'`)
-4. Push to the branch (`git push origin feature/amazing-attack`)
-5. Open a Pull Request
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
-
-## 📚 Documentation
-
-- [Project Journal](PROJECT_JOURNAL.md) - Development roadmap and progress
-- [Conversation History](CONVERSATION_HISTORY.md) - Complete project discussions
-- [API Documentation](docs/api.md) - Coming soon
-- [Attack Module Guide](docs/attacks.md) - Coming soon
-
-## 🎓 Research & References
-
-- [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- [MITRE ATLAS](https://atlas.mitre.org/)
-- [PyRIT](https://github.com/Azure/PyRIT)
-- [Adversarial Robustness Toolbox](https://github.com/Trusted-AI/adversarial-robustness-toolbox)
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## ⚠️ Disclaimer
-
-This tool is for security research and authorized testing only. Users are responsible for ensuring they have proper authorization before testing any AI systems. Misuse of this tool may violate laws and regulations.
-
-## 🌟 Roadmap
-
-- [x] Project planning and architecture design
-- [ ] Core framework implementation
-- [ ] Initial attack modules (LLM jailbreaks, ML evasion)
-- [ ] CLI interface
-- [ ] Reporting system
-- [ ] Multimodal attack support
-- [ ] AI-assisted orchestration
-- [ ] Community hub for custom modules
-- [ ] Comprehensive documentation
-
-## 📧 Contact
-
-Project Maintainer: [Your Name]
-- GitHub: [@your-username]
-- Email: [your-email]
+AI red teaming framework. Tests language models, agents, and multimodal systems for security vulnerabilities.
 
 ---
 
-**Status**: 🚧 In Active Development - Day 1 (April 15, 2026)
+## Install
 
-Built with ❤️ by the AI Security Community
+```bash
+pip install chimera-ai
+```
+
+Or from source:
+
+```bash
+git clone https://github.com/MrETL/chimera
+cd chimera
+pip install -e .
+```
+
+---
+
+## Usage
+
+```bash
+chimera --help
+```
+
+### Interactive session
+
+```bash
+chimera console --target ollama://llama3.2
+chimera console --target openai://gpt-4
+chimera console --target https://your-model-endpoint.com
+```
+
+### CLI
+
+```bash
+chimera list
+chimera attack crescendo --target ollama://llama3.2 --prompt "..."
+chimera scan --target https://api.example.com --category llm/jailbreak
+chimera try-all skeleton_key --target openai://gpt-4
+chimera benchmark --target https://api.example.com
+```
+
+---
+
+## Targets
+
+Works against any model — local or remote:
+
+| Target | URI |
+|--------|-----|
+| Ollama (local) | `ollama://llama3.2` |
+| Any REST API | `https://your-endpoint.com` |
+| OpenAI | `openai://gpt-4` |
+| Anthropic | `anthropic://claude-3-5-sonnet-20241022` |
+| Groq | `groq://llama-3.1-70b-versatile` |
+| Together AI | `together://meta-llama/Llama-3-70b-chat-hf` |
+| Mistral | `mistral://mistral-large-latest` |
+| Azure OpenAI | `azure://gpt-4` |
+| HuggingFace | `huggingface://meta-llama/Llama-2-7b-chat-hf` |
+| vLLM | `vllm://meta-llama/Llama-3-8b-instruct` |
+| LiteLLM | `litellm://gpt-4` |
+| LM Studio | `lmstudio://local` |
+
+Pass API keys via environment variables or inline:
+
+```bash
+export OPENAI_API_KEY=sk-...
+chimera attack artprompt --target openai://gpt-4 --prompt "..."
+
+# Or inline
+chimera attack artprompt \
+  --target "https://endpoint.com::Authorization=Bearer TOKEN" \
+  --prompt "..."
+```
+
+---
+
+## License
+
+Apache-2.0

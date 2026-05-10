@@ -1,34 +1,47 @@
 # Python
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-ENV/
-build/
-dist/
+*.pyo
+*.egg
 *.egg-info/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
+dist/
+build/
+.eggs/
+*.whl
+*.c
+
+# Virtual environment
+venv/
+env/
+.env/
+.venv/
 
 # IDE
 .vscode/
 .idea/
 *.swp
-
-# Environment
-.env
-.env.local
-
-# Chimera specific
-reports/
-logs/
-*.log
-scan_report.*
-
-# OS
 .DS_Store
-Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Runtime files
+*.db
+*.sqlite
+*.log
+*_session.json
+*_results.json
+*_output.txt
+benchmark_report.*
+research.db
+
+# Secrets
+.env
+*.key
+*.pem
+
+# Build scripts (keep private)
+build_*.py
+protect*.sh
